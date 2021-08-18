@@ -36,10 +36,23 @@ const input = document.querySelector('input');
 const buttons = document.querySelectorAll('button[class=num]');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        curr_input += button.textContent;
-        input.value = curr_input;
+        if (input.value == "0") {
+            curr_input = button.textContent;
+            input.value = curr_input;
+        } else {
+            curr_input += button.textContent;
+            input.value = curr_input;
+        }
     });
 });
+
+const zero = document.getElementById('0');
+zero.addEventListener('click', () => {
+    if (curr_input != "0" && input.value != "0") {
+        curr_input += "0";
+        input.value = curr_input;
+    }
+})
 
 const clear = document.getElementById('clear');
 clear.addEventListener('click', () => {
@@ -51,12 +64,24 @@ clear.addEventListener('click', () => {
 
 const back = document.getElementById('backspace');
 back.addEventListener('click', () => {
-    curr_input = curr_input.substring(0, curr_input.length - 1);
-    input.value = curr_input;
+    if (curr_input.length == 1) {
+        curr_input = 0;
+        input.value = curr_input;
+    }
+    if (curr_input != "") {
+        curr_input = curr_input.substring(0, curr_input.length - 1);
+        input.value = curr_input;
+    }
 });
 
 const plusOrMinus = document.getElementById('plusOrMinus');
 plusOrMinus.addEventListener('click', () => {
+    console.log(nums);
+    console.log(input.value);
+    console.log(curr_input);
+    if (!curr_input) {
+        curr_input = input.value;
+    }
     if (curr_input[0] == '-') {
         curr_input = curr_input.substring(1, curr_input.length);
     } else {
@@ -67,6 +92,10 @@ plusOrMinus.addEventListener('click', () => {
 
 const dec = document.getElementById('decimal');
 dec.addEventListener('click', () => {
+    if (!curr_input) {
+        curr_input += "0.";
+        input.value = curr_input;
+    }
     if (!input.value.includes('.')) {
         curr_input += ".";
         input.value = curr_input;
@@ -80,7 +109,7 @@ op.forEach((operation) => {
             nums['number'] = input.value;
             nums['operator'] = operation.id;
             curr_input = "";
-        } else {
+        } else if (curr_input) {
             nums['number'] = operate(nums['operator'], parseFloat(nums['number']), parseFloat(curr_input));
             nums['operator'] = operation.id;
             input.value = nums['number'];
@@ -91,8 +120,9 @@ op.forEach((operation) => {
 
 const equal = document.getElementById('equal');
 equal.addEventListener('click', () => {
-    if (nums['operator'] != 'empty' || curr_input != "") {
+    if (nums['operator'] != 'empty' && nums['number'] != "empty" && curr_input) {
         input.value = operate(nums['operator'], parseFloat(nums['number']), parseFloat(curr_input));
         nums['number'] = "empty";
+        curr_input = "";
     }
 })
