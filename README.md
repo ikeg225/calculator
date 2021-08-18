@@ -1,4 +1,4 @@
-#Calculator
+# Calculator
 
 Features:
 - Can do basic mathematical functions (add, subtract, multiply, divide)
