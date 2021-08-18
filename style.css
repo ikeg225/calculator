@@ -68,3 +68,7 @@ input:focus {
 button:hover {
     filter: brightness(0.85);
 }
+
+.light {
+    background-color: lightgray;
+}
