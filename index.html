@@ -4,30 +4,31 @@
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div id=calculator>
-            <input type='text' value='0'>
+            <input type='text' value='0' maxlength="25">
             <div id="buttons">
                 <button id="clear">AC</button>
                 <button id="plusOrMinus">+/-</button>
                 <button id="backspace">«</button>
-                <button class="op" id="divide">÷</button>
-                <button class="num" id="7">7</button>
-                <button class="num" id="8">8</button>
-                <button class="num" id="9">9</button>
-                <button class="op" id="multiply">x</button>
-                <button class="num" id="4">4</button>
-                <button class="num" id="5">5</button>
-                <button class="num" id="6">6</button>
-                <button class="op" id="subtract">-</button>
-                <button class="num" id="1">1</button>
-                <button class="num" id="2">2</button>
-                <button class="num" id="3">3</button>
-                <button class="op" id="add">+</button>
-                <button id="0">0</button>
-                <button id="decimal">.</button>
-                <button id="equal">=</button>
+                <button class="op orange" id="divide">÷</button>
+                <button class="num gray" id="7">7</button>
+                <button class="num gray" id="8">8</button>
+                <button class="num gray" id="9">9</button>
+                <button class="op orange" id="multiply">x</button>
+                <button class="num gray" id="4">4</button>
+                <button class="num gray" id="5">5</button>
+                <button class="num gray" id="6">6</button>
+                <button class="op orange" id="subtract">-</button>
+                <button class="num gray" id="1">1</button>
+                <button class="num gray" id="2">2</button>
+                <button class="num gray" id="3">3</button>
+                <button class="op orange" id="add">+</button>
+                <button id="0" class="zero gray">0</button>
+                <button id="decimal" class="gray">.</button>
+                <button class="orange" id="equal">=</button>
             </div>
         </div>
     </body>
